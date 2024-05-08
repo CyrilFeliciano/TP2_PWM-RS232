@@ -56,6 +56,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include "app.h"
 #include "Mc32gest_RS232.h"
 #include <stdint.h>
+#include "gestPWM.h"
 
 // *****************************************************************************
 // *****************************************************************************
