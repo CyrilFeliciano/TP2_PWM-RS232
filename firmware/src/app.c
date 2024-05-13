@@ -80,7 +80,6 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 */
 
 APP_DATA appData;
-S_pwmSettings pData;
 S_pwmSettings PWMData;
 S_pwmSettings PWMDataToSend;
 
