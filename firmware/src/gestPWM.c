@@ -151,8 +151,9 @@ void GPWM_DispSettings(S_pwmSettings *pData, int Remote)
 {
     static uint8_t compteurAffichageLcd = 0;
     static uint8_t compteurClearLine;
+    static uint8_t oldRemoteValue = 0;
     
-        // Si les lignes du LCD n'ont pas été effacées auparavant (compteurClearLine est à 0), efface les lignes et affiche les titres.
+    // Si les lignes du LCD n'ont pas été effacées auparavant (compteurAffichageLcd est à 0), efface les lignes et affiche les titres.
     if(compteurAffichageLcd == 0)
     {
         for(compteurClearLine = 1; compteurClearLine < CINQUE; compteurClearLine++)
@@ -170,17 +171,19 @@ void GPWM_DispSettings(S_pwmSettings *pData, int Remote)
     }
  
     // Affiche "Local Settings" ou "** Remote Settings" sur la première ligne du LCD en fonction de la valeur de Remote.
-    if(Remote == 0)
-    {   
-        lcd_gotoxy(1,1); // Déplacement du curseur à la position (1,1) pour afficher le statut des réglages.
-        printf_lcd("Local Settings    ");
-    }
-    else
+    if(oldRemoteValue != Remote)
     {
-        lcd_gotoxy(1,1); // Déplacement du curseur à la position (1,1) pour afficher le statut des réglages.
-        printf_lcd("** Remote Settings");
+        if(Remote == 0)
+        {   
+            lcd_gotoxy(1,1); // Déplacement du curseur à la position (1,1) pour afficher le statut des réglages.
+            printf_lcd("Local Settings    ");
+        }
+        else
+        {
+            lcd_gotoxy(1,1); // Déplacement du curseur à la position (1,1) pour afficher le statut des réglages.
+            printf_lcd("** Remote Settings");
+        }
     }
-    
         // Affiche les valeurs de vitesse, de vitesse absolue et d'angle sur le LCD.
         lcd_gotoxy(14,2); // Déplacement du curseur à la position (14,2) pour afficher la vitesse de réglage.
         printf_lcd("%3d ", pData->SpeedSetting);
@@ -188,6 +191,8 @@ void GPWM_DispSettings(S_pwmSettings *pData, int Remote)
         printf_lcd("%2d ", pData->absSpeed);
         lcd_gotoxy(14,4); // Déplacement du curseur à la position (14,4) pour afficher l'angle de réglage.
         printf_lcd("%3d ", pData->AngleSetting);
+
+    oldRemoteValue = Remote;
 }
 
      
