@@ -155,7 +155,7 @@ void GPWM_DispSettings(S_pwmSettings *pData, int Remote)
         // Si les lignes du LCD n'ont pas été effacées auparavant (compteurClearLine est à 0), efface les lignes et affiche les titres.
     if(compteurAffichageLcd == 0)
     {
-        for(compteurClearLine = 1; compteurClearLine < cinq; compteurClearLine++)
+        for(compteurClearLine = 1; compteurClearLine < CINQUE; compteurClearLine++)
         {
              lcd_ClearLine(compteurClearLine);
         }
