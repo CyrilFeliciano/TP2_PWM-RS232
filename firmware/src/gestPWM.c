@@ -15,6 +15,7 @@
 #include <stdint.h>
 #include <math.h>
 
+
 // *****************************************************************************
 /* Fonction :
     void GPWM_Initialize(S_pwmSettings *pData)
