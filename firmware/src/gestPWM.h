@@ -31,10 +31,6 @@ typedef struct {
     int8_t AngleSetting; // consigne angle  -90 à +90    
 } S_pwmSettings;
 
-S_pwmSettings pData;
-S_pwmSettings PWMData;
-S_pwmSettings PWMDataToSend;
-
 void GPWM_Initialize(S_pwmSettings *pData);
 
 // Ces 3 fonctions ont pour paramètre un pointeur sur la structure S_pwmSettings.
