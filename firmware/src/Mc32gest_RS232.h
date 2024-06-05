@@ -20,6 +20,7 @@
 
 // Nombre de cycle maximal pour compteur NbrCycle
 #define CYCLE_MAX 9
+#define TAILLE_MINIMALE_FIFO_RX 6
 /*--------------------------------------------------------*/
 // Définition des fonctions prototypes
 /*--------------------------------------------------------*/
