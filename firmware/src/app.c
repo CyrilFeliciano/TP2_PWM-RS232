@@ -113,7 +113,7 @@ void callback_timer1(void)
 {
     static uint8_t compteur3s = 0;
         // Déclencher un changement d'état vers APP_STATE_SERVICE_TASKS
-        if (compteur3s <= 149)
+        if (compteur3s <= COMPTEUR_3_SECONDES)
         {
             APP_UpdateState(APP_STATE_INIT);
             compteur3s++;
