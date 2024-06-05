@@ -216,8 +216,6 @@ int GetMessage(S_pwmSettings *pData)
 void SendMessage(S_pwmSettings *pData)
 {
     int8_t freeSize;
-    uint8_t TransmitCRCHigh = 0;
-    uint8_t TransmitCRCLow = 0;
     uint32_t NewCRC = 0xFFFF;
     // Traitement émission à introduire ICI
     // Formatage message et remplissage fifo émission
@@ -233,15 +231,13 @@ void SendMessage(S_pwmSettings *pData)
         NewCRC = updateCRC16(NewCRC, pData->AngleSetting);
 
         // Sépare le CRC16 en octets MSB et LSB.
-        TransmitCRCHigh = (NewCRC & 0xFF00) >> 8;
-        TransmitCRCLow = NewCRC & 0x00FF;
+        TxMess.MsbCrc = (NewCRC & 0xFF00) >> 8;
+        TxMess.LsbCrc = NewCRC & 0x00FF;
 
         // Remplit la structure TxMess avec les paramètres et le CRC16.
         TxMess.Start = STX_code;
         TxMess.Speed = pData->SpeedSetting;
         TxMess.Angle = pData->AngleSetting;
-        TxMess.MsbCrc = TransmitCRCHigh;
-        TxMess.LsbCrc = TransmitCRCLow;
 
         // Écrit chaque élément de la structure TxMess dans le FIFO de transmission.
         PutCharInFifo(&descrFifoTX, TxMess.Start);
