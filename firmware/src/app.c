@@ -304,7 +304,7 @@ void APP_Tasks(void)
             GPWM_ExecPWM(&PWMData);
 
             // Envoi périodique des données si nécessaire.
-            if(comptSend >= 5) // Si le compteur d'envoi atteint 5.
+            if(comptSend >= 4) // Si le compteur d'envoi atteint 5.
             {
                 if (CommStatus == 0) // Si c'est local.
                 {
