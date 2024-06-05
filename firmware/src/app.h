@@ -74,6 +74,7 @@ extern "C" {
 // DOM-IGNORE-END 
 
 #define COMPTEUR_3_SECONDES  149
+#define COMPTEUR_5_CYCLES_ENVOIE 4
 // *****************************************************************************
 // *****************************************************************************
 // Section: Type Definitions
