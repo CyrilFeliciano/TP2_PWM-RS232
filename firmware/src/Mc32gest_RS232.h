@@ -19,7 +19,7 @@
 
 
 // Nombre de cycle maximal pour compteur NbrCycle
-#define CYCLE_MAX 10
+#define CYCLE_MAX 9
 /*--------------------------------------------------------*/
 // Définition des fonctions prototypes
 /*--------------------------------------------------------*/
