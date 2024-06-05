@@ -329,7 +329,7 @@ void __ISR(_UART_1_VECTOR, ipl5AUTO) _IntHandlerDrvUsartInstance0(void)
         // Gerer sortie RS232_RTS en fonction de place dispo dans fifo reception
         // ...
         freeSize = GetWriteSpace(&descrFifoRX);
-        if (freeSize <= 6){
+        if (freeSize <= TAILLE_MINIMALE_FIFO_RX){
             //controle de flux : demande stop émission
             RS232_RTS = 1 ;
         }        
