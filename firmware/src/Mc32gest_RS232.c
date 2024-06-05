@@ -31,8 +31,7 @@ typedef union {
 #define MESS_SIZE  5
 // avec int8_t besoin -86 au lieu de 0xAA
 #define STX_code  (-86)
-// Nombre de cycle maximal pour compteur NbrCycle
-#define CYCLE_MAX 9
+
 
 // Structure décrivant le message
 typedef struct {
