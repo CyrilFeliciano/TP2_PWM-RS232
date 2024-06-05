@@ -3,7 +3,7 @@
 /*--------------------------------------------------------*/
 // Mc32Gest_RS232.h
 /*--------------------------------------------------------*/
-//	Description :	emission et reception spécialisée
+//	Description :	emission et reception spÃ©cialisÃ©e
 //			        pour TP2 2016-2017
 //
 //	Auteur 		: 	C. HUBER
@@ -17,8 +17,11 @@
 #include "GesFifoTh32.h"
 #include "gestPWM.h"
 
+
+// Nombre de cycle maximal pour compteur NbrCycle
+#define CYCLE_MAX 10
 /*--------------------------------------------------------*/
-// Définition des fonctions prototypes
+// DÃ©finition des fonctions prototypes
 /*--------------------------------------------------------*/
 
 // prototypes des fonctions
