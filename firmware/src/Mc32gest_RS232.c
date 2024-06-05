@@ -267,7 +267,6 @@ void __ISR(_UART_1_VECTOR, ipl5AUTO) _IntHandlerDrvUsartInstance0(void)
     uint8_t freeSize, TXSize;
     uint8_t byteUsart = 0;
     int8_t c;
-    int8_t i_cts = 0;
     bool TxBuffFull;
     USART_ERROR UsartStatus;
  
@@ -342,7 +341,6 @@ void __ISR(_UART_1_VECTOR, ipl5AUTO) _IntHandlerDrvUsartInstance0(void)
         // Traitement TX à faire ICI
         // Envoi des caractères depuis le fifo SW -> buffer HW
         TXSize = GetReadSize (&descrFifoTX);
-        i_cts = RS232_CTS;
         // Avant d'émettre, on vérifie 3 conditions :
         //  Si CTS = 0 autorisation d'émettre (entrée RS232_CTS)
         //  S'il y a un caratères à émettre dans le fifo
@@ -352,16 +350,15 @@ void __ISR(_UART_1_VECTOR, ipl5AUTO) _IntHandlerDrvUsartInstance0(void)
          TXSize = GetReadSize (&descrFifoTX);
          TxBuffFull = PLIB_USART_TransmitterBufferIsFull(USART_ID_1);
          
-         if ( (i_cts == 0) && ( TXSize > 0 ) && TxBuffFull == false )
+         if ( (RS232_CTS == 0) && ( TXSize > 0 ) && TxBuffFull == false )
          { 
             do {
               GetCharFromFifo(&descrFifoTX, &c);
               PLIB_USART_TransmitterByteSend(USART_ID_1, c);
               BSP_LEDToggle(BSP_LED_6); // pour comptage
-              i_cts = RS232_CTS;
               TXSize = GetReadSize (&descrFifoTX);
               TxBuffFull = PLIB_USART_TransmitterBufferIsFull(USART_ID_1);
-            } while ( (i_cts == 0) && ( TXSize > 0 ) && TxBuffFull == false );
+            } while ( (RS232_CTS == 0) && ( TXSize > 0 ) && TxBuffFull == false );
             // Clear the TX interrupt Flag
             // (Seulement aprés TX)
 
